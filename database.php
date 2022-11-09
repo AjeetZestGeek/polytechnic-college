@@ -8,7 +8,7 @@ if(!defined("DB_HOST")){
 }
 
 if(!defined("DB_NAME")){
-	define("DB_NAME","alex_accesories");
+	define("DB_NAME","polytechnic_college");
 }
 
 if(!defined("DB_PWD")){

@@ -1,4 +1,4 @@
-CREATE DATABASE alex_accesories
+CREATE DATABASE polytechnic_college
 
 CREATE TABLE users(
 	id BIGINT PRIMARY KEY AUTO_INCREMENT,
