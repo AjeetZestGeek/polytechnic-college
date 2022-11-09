@@ -4,7 +4,7 @@
 ?>
   
 <div class="container">
-  <h2><?php if(isset($_GET['id'])){ echo 'Add User';}else{echo 'Signup form';}?></h2>
+  <h2><?php if(isset($_GET['id'])){ echo 'Update User';}else{echo 'Add User';}?></h2>
   <form class="form-horizontal" action="" method="post">
     <div class="form-group">
       <label class="control-label col-sm-2" for="name">Name:</label>
