@@ -1,7 +1,7 @@
 <?php 
 require_once('signupConfig.php');
 $type = 'save';
-$class = 'btn btn-primary';
+$class = 'btn btn-success';
 if (isset($_GET['id'])&&isset($_GET['req'])) {
 	if($_GET['req']=='edit'){
 		$type = 'update';
