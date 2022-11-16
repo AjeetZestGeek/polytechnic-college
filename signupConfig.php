@@ -1,12 +1,12 @@
 <?php 
 require_once('database.php');
-
 /**
  * 
  */
 class signupConfig
 {
 	private $id;
+	private $username;
 	private $student_number;
 	private $name; 		 	
 	private $email;
@@ -35,6 +35,14 @@ class signupConfig
 
 	public function getId(){
 		return $this->id;
+	}
+
+	public function setUsername($username){
+		$this->username = $username;
+	}
+
+	public function getUsername(){
+		return $this->username;
 	}
 
 	public function setStudentNumber($student_number){
@@ -78,7 +86,7 @@ class signupConfig
 	}
 
 	public function setPassword($password){
-		$this->password = $password;
+		$this->password = sha1($password);
 	}
 
 	public function getPassword(){
@@ -149,5 +157,15 @@ class signupConfig
 		}
 	}
 
+	public function login(){
+		try{
+			$stm = $this->con->prepare("SELECT * FROM users WHERE (student_number = ? OR email = ?) AND password = ?");
+			$stm->execute([$this->username,$this->username,$this->password]);
+			return $stm;
+		}
+		catch(Exception $e){
+			return $e->getMessage();
+		}
+	}
 
 }

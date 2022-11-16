@@ -1,7 +1,5 @@
 <?php 
-require_once('layout/header.php');
-require_once('signupConfig.php');
-require_once('signupProcess.php');
+require_once('../layout/header.php');
 $sc = new signupConfig();
 $record = $sc->fetchAll();
 ?>
@@ -37,5 +35,5 @@ $record = $sc->fetchAll();
 	</tbody>
 </table>
 <?php 
-require_once('layout/footer.php');
+require_once('../layout/footer.php');
 ?>
