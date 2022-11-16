@@ -1,8 +1,10 @@
 <?php 
 require_once('../layout/header.php');
+require_once('../user/signupProcess.php');
 $sc = new signupConfig();
 $record = $sc->fetchAll();
 ?>
+<a class="btn btn-primary btn-lg" href="userForm.php">Add User</a>
 <table class="table">
 	<thead>
 		<tr>
@@ -29,7 +31,7 @@ $record = $sc->fetchAll();
 			<td><?=$value['program'];?></td>
 			<td><?=$value['ongoing_term'];?></td>
 			<td><?=$value['status'];?></td>
-			<td><a class="btn btn-warning" href="signup.php?id=<?=$value['id'];?>&req=edit"><i class="glyphicon glyphicon-edit"></i></a>&nbsp<a class="btn btn-danger" href="?id=<?=$value['id'];?>&req=delete"><i class="glyphicon glyphicon-trash"></i></a></td>
+			<td><a class="btn btn-warning btn-lg" href="userForm.php?id=<?=$value['id'];?>&req=edit"><i class="glyphicon glyphicon-edit"></i></a>&nbsp<a class="btn btn-danger btn-lg" href="?id=<?=$value['id'];?>&req=delete"><i class="glyphicon glyphicon-trash"></i></a></td>
 		</tr>
 	<?php } ?>
 	</tbody>

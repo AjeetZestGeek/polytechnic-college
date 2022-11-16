@@ -18,3 +18,18 @@ if(!defined("DB_PWD")){
 if(!defined("DB_USER")){
 	define("DB_USER","root");
 }
+
+if(!isset($_SESSION['user'])&&empty($_SESSION['user'])){
+  ?>
+  <script type="text/javascript">alert('Access Denied');window.location = '../index.php';</script>
+  <?php
+}else{
+  $userdata = $_SESSION['user'][0];
+  $userid = $userdata['id'];
+  $username = ucfirst($userdata['name']);
+  $userrole = $userdata['role'];
+  $userstatus = $userdata['status'];
+}
+function isAdmin($role){
+  return $role == 'Admin';
+}

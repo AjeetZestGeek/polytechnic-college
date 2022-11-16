@@ -1,11 +1,22 @@
 <?php 
 session_start();
-require_once('signupConfig.php');
+$servername = "localhost";
+$username = "root";
+$password = "password";
+$conn = new PDO("mysql:host=$servername;dbname=polytechnic_college", $username, $password);
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+function login($conn,$username,$password){
+  try{
+    $stm = $conn->prepare("SELECT * FROM users WHERE (student_number = ? OR email = ?) AND password = ?");
+    $stm->execute([$username,$username,$password]);
+    return $stm;
+  }
+  catch(Exception $e){
+    return $e->getMessage();
+  }
+}
 if(isset($_POST['login'])){
-  $sql = new signupConfig();
-  $sql->setUsername($_POST['userid']);
-  $sql->setPassword($_POST['password']);
-  $data = $sql->login();
+  $data = login($conn,$_POST['userid'],sha1($_POST['password']));
   if($data->rowCount()==1){
     $_SESSION['user'] = $data->fetchAll();
     header('Location:pages/index.php');

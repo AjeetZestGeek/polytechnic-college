@@ -33,7 +33,7 @@ CREATE TABLE routine(
 	event_date VARCHAR(255) NOT NULL,
 	from_time VARCHAR(255) NOT NULL,
 	to_time VARCHAR(255) NOT NULL,
-	is_globel VARCHAR(255) DEFAULT 0,
+	is_globel int(1) DEFAULT 0,
 	priority_id BIGINT, 
 	created_at VARCHAR(255),
 	updated_at VARCHAR(255),

@@ -1,5 +1,5 @@
 <?php 
-require_once('database.php');
+require_once('../database.php');
 /**
  * 
  */
@@ -105,7 +105,7 @@ class signupConfig
 		try{
 			$stm = $this->con->prepare("INSERT INTO users(student_number,name,email,program,ongoing_term,password,status)VALUES(?,?,?,?,?,?,?)");
 			$stm->execute([$this->student_number,$this->name,$this->email,$this->program,$this->ongoing_term,$this->password,$this->status]);
-			echo "<script>alert('Data saved successfully');document.location = 'allData.php'</script>";
+			echo "<script>alert('Data saved successfully');document.location = 'userList.php'</script>";
 		}
 		catch(Exception $e){
 			return $e->getMessage();
@@ -138,7 +138,7 @@ class signupConfig
 		try{
 			$stm = $this->con->prepare("UPDATE users set name = ?, email = ?, program = ?, ongoing_term = ? WHERE id = ?");
 			$stm->execute([$this->name,$this->email,$this->program,$this->ongoing_term,$this->id]);
-			echo "<script>alert('Data updated successfully');document.location = 'allData.php'</script>";
+			echo "<script>alert('Data updated successfully');document.location = 'userList.php'</script>";
 		}
 		catch(Exception $e){
 			return $e->getMessage();
@@ -150,22 +150,10 @@ class signupConfig
 			$stm = $this->con->prepare("DELETE  FROM users WHERE id = ?");
 			$stm->execute([$this->id]);
 			return $stm->fetchAll();
-			echo "<script>alert('Data deleted successfully');document.location = 'allData.php'</script>";
+			echo "<script>alert('Data deleted successfully');document.location = 'userList.php'</script>";
 		}
 		catch(Exception $e){
 			return $e->getMessage();
 		}
 	}
-
-	public function login(){
-		try{
-			$stm = $this->con->prepare("SELECT * FROM users WHERE (student_number = ? OR email = ?) AND password = ?");
-			$stm->execute([$this->username,$this->username,$this->password]);
-			return $stm;
-		}
-		catch(Exception $e){
-			return $e->getMessage();
-		}
-	}
-
 }

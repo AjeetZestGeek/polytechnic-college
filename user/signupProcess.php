@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
 			$sc->setPassword($_POST['pwd']);
 		}else{
 			$msg = "Password and Confirm Password are not matched";
-			header('Location:signup.php');
+			header('Location:userForm.php');
 		}
 		$sc->insertData();
 	}
