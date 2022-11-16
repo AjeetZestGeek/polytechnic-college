@@ -1,5 +1,6 @@
 <?php 
   require_once('../layout/header.php');
+  require_once('../user/signupProcess.php');
 ?>
   
 <div class="container">
@@ -42,17 +43,11 @@
         <input type="password" class="form-control" id="conpwd" placeholder="Enter confirm password" name="conpwd">
       </div>
     </div>
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <div class="checkbox">
-          <label><input type="checkbox" name="remember"> Remember me</label>
-        </div>
-      </div>
-    </div>
   <?php } ?>
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="<?=$class;?>" name="submit" value="<?=$type;?>" class="btn btn-default"><?php if(!isset($_GET['id'])){ echo 'Submit';}else{echo 'Update';}?></button>
+        <button type="submit" class="btn <?=$class;?> btn-lg" name="submit" value="<?=$type;?>" class="btn btn-default"><?php if(!isset($_GET['id'])){ echo 'Add';}else{echo 'Update';}?></button>
+        <a class="btn btn-warning btn-lg" href="userList.php">Back</a>
       </div>
     </div>
   </form>

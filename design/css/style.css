@@ -1,4 +1,7 @@
-.text-danger{
+body{
+    font-size: 14px !important;
+}
+   .text-danger{
 	color: red;
 }
 .login-form {
