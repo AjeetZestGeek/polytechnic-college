@@ -8,7 +8,7 @@
   
 <div class="container">
   <h2 class="main-heading"><?php if(isset($_GET['id'])){ echo 'Update Routine';}else{echo 'Add Routine';}?></h2>
-  <form class="form-horizontal" action="" method="post">
+  <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
     <div class="form-group">
       <label class="control-label col-sm-2" for="title">Title:</label><span class="text-danger">*</span>
       <div class="col-sm-10">

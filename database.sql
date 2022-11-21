@@ -28,7 +28,7 @@ CREATE TABLE priority(
 CREATE TABLE routine(
 	id BIGINT PRIMARY KEY AUTO_INCREMENT,
 	title VARCHAR(255) NOT NULL,
-	content VARCHAR(255),
+	content LONGTEXT,
 	image VARCHAR(255),
 	event_date VARCHAR(255) NOT NULL,
 	from_time VARCHAR(255) NOT NULL,
