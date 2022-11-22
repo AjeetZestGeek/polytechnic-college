@@ -15,6 +15,12 @@ if (isset($_GET['id'])&&isset($_GET['req'])) {
 		$sc->setId($_GET['id']);
 		$data = $sc->delete();
 	}
+	if($_GET['req']=='change-status'){
+		$sc = new signupConfig();
+		$sc->setId($_GET['id']);
+		$sc->setStatus($_GET['status']);
+		$data = $sc->changeStatus();
+	}
 }
 if (isset($_POST['submit'])) {
 	$sc = new signupConfig();

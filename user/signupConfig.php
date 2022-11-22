@@ -156,4 +156,15 @@ class signupConfig
 			return $e->getMessage();
 		}
 	}
+
+	public function changeStatus(){
+		try{
+			$stm = $this->con->prepare("UPDATE users set status = ? WHERE id = ?");
+			$stm->execute([$this->status,$this->id]);
+			echo "<script>document.location = 'userList.php'</script>";
+		}
+		catch(Exception $e){
+			return $e->getMessage();
+		}
+	}
 }

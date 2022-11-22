@@ -22,6 +22,10 @@ body{
 .table {
    background-color: #fff;
 }
+.main-comment {
+    max-width: 1200px;
+    width: 100%;
+}
 table td a {
     color: #000;
     text-decoration: none;
@@ -57,12 +61,15 @@ table td a {
    line-height: 34px;
    font-size: 24px;
 }
+.update-btns {
+    padding: 15px;
+}
 .card{
-       width: 100%;
-    max-width: 600px;
+     width: 100%;
+    max-width: 1200px;
     text-align: center;
     margin: auto;
     border: 1px solid #ccc;
-    margin-top: 60px;
+    margin-bottom: 60px;
     padding: 35px 15px;
 }
