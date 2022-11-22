@@ -3,7 +3,7 @@
   require_once('../routine/routineProcess.php');
   require_once('../priority/priorityProcess.php');
   $sc = new priorityConfig();
-  $record = $sc->fetchAll();
+  $record = $sc->fetchAll(true);
 ?>
   
 <div class="container">
@@ -61,7 +61,7 @@
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
         <button type="submit" class="btn <?=$class;?> btn-lg" name="save" value="<?php if(!isset($_GET['id'])){ echo 'save';}else{echo 'update';}?>"><?php if(!isset($_GET['id'])){ echo 'Add';}else{echo 'Update';}?></button>
-        <a class="btn btn-danger btn-lg" href="userList.php">Back</a>
+        <a class="btn btn-danger btn-lg" href="routineList.php">Back</a>
       </div>
     </div>
   </form>

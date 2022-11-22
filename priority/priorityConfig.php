@@ -63,9 +63,13 @@ class priorityConfig
 		}
 	}
 
-	public function fetchAll(){
+	public function fetchAll($status=false){
 		try{
-			$stm = $this->con->prepare("SELECT * FROM priority");
+			$sql = "SELECT * FROM priority";
+			if($status){
+				$sql .= " WHERE status = 1";
+			}
+			$stm = $this->con->prepare("$sql");
 			$stm->execute();
 			return $stm->fetchAll();
 		}
@@ -102,6 +106,17 @@ class priorityConfig
 			$stm->execute([$this->id]);
 			return $stm->fetchAll();
 			echo "<script>alert('Data deleted successfully');document.location = 'priorityList.php'</script>";
+		}
+		catch(Exception $e){
+			return $e->getMessage();
+		}
+	}
+
+	public function changeStatus(){
+		try{
+			$stm = $this->con->prepare("UPDATE priority set status = ? WHERE id = ?");
+			$stm->execute([$this->status,$this->id]);
+			echo "<script>document.location = 'priorityList.php'</script>";
 		}
 		catch(Exception $e){
 			return $e->getMessage();

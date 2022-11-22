@@ -6,20 +6,7 @@
 	$sc->setId($_GET['id']);
 	$record = $sc->fetchOne()[0];
  ?>
- <style type="text/css">
- .card{
-    width: 100%;
-    max-width: 1200px;
-    text-align: center;
-    margin: auto;
-    border: 1px solid #ccc;
-    margin-top: 60px;
-    padding: 35px 15px;
-}
-.update-btns {
-    padding: 15px;
-}
- </style>
+
 <div class="card">
 	<div class="container">
 		<div class="col-lg-6" style="height: 350px;">
@@ -48,14 +35,17 @@
   	<a href="routineList.php?id=<?=$record['id'];?>&req=delete"><button class="btn btn-danger btn-lg">Delete</button></a>
   </div>
 </div>
-<div class="card">
-	<div class="row align-items-center main-row-sec">
-		<div class="col-md-12"> 
+
+<div class="row align-items-center main-row-sec main-comment">
+		<div class="col-md-12">
 			<div class="blog-list"> 
 				<h5>Comments</h5>
 			</div>
 		</div>
 	</div>
+
+<div class="card">
+	
 	<table class="table">
 		<tr>
 			<th><label>Name : </label></th>
