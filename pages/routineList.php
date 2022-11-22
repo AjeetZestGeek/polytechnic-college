@@ -5,7 +5,18 @@
 	$sc = new routineConfig();
 	$record = $sc->fetchAll($userid);
  ?>
-<a class="btn btn-primary btn-lg" href="routineForm.php">Add Routine</a>
+<div class="row align-items-center main-row-sec">
+	<div class="col-md-6"> 
+		<div class="blog-list"> 
+			<h5>Routine List</h5>
+		</div>
+	</div>
+	<div class="col-md-6"> 
+		<div class="blog-btn">	
+			<a href="routineForm.php" class="btn btn-lg	btn-primary">Add</a>
+		</div>
+	</div>
+</div>
 <table class="table">
 	<thead>
 		<tr>

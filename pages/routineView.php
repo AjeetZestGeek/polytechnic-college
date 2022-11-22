@@ -49,6 +49,13 @@
   </div>
 </div>
 <div class="card">
+	<div class="row align-items-center main-row-sec">
+		<div class="col-md-12"> 
+			<div class="blog-list"> 
+				<h5>Comments</h5>
+			</div>
+		</div>
+	</div>
 	<table class="table">
 		<tr>
 			<th><label>Name : </label></th>
