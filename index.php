@@ -20,6 +20,8 @@ if(isset($_POST['login'])){
   if($data->rowCount()==1){
     $_SESSION['user'] = $data->fetchAll();
     header('Location:pages/index.php');
+  }else{
+    echo '<script>alert("Student ID / Password wrong");window.location="index.php";</script>';
   }
 }
 ?>

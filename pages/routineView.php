@@ -39,30 +39,23 @@
 <div class="row align-items-center main-row-sec main-comment">
 		<div class="col-md-12">
 			<div class="blog-list"> 
-				<h5>Comments</h5>
+				<h5>Work Done</h5>
 			</div>
 		</div>
 	</div>
 
 <div class="card">
-	
+	<form method="post">
 	<table class="table">
 		<tr>
-			<th><label>Name : </label></th>
-			<td><input class="form-control" name="" value="" required></td>
-		</tr>
-		<tr>
-			<th><label>Email : </label></th>
-			<td><input class="form-control" name="" value="" required></td>
-		</tr>
-		<tr>
-			<th><label>Comment : </label></th>
-			<td><textarea class="form-control" name="" required></textarea></td>
+			<th><label for="comment">Comment : </label></th>
+			<td><textarea class="form-control form-control-lg" id="comment" name="comment" required></textarea></td>
 		</tr>
 		<tr>
 			<th></th><td style="float:right;"><button class="btn btn-primary btn-lg" name="">Submit</button></td>
 		</tr>
 	</table>
+</form>
 </div><br>
   <?php 
 	require_once '../layout/footer.php';

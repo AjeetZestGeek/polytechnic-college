@@ -44,7 +44,7 @@
 			<td><?=$value['from_time'];?></td>
 			<td><?=$value['to_time'];?></td>
 			<td><?=getTitleById($value['priority_id']);?></td>
-			<td><?=$value['status'];?></td>
+			<td><a onclick="alert('Comment to complete !!!');" class=" <?=$value['status']==0?' btn btn-warning btn-lg':'btn btn-sucess btn-lg'?>"><?=$value['status']==0?'Pending':'Completed';?></a></td>
 			<td><a class="btn btn-warning btn-lg" href="routineForm.php?page=routine&id=<?=$value['id'];?>&req=edit"><i class="glyphicon glyphicon-edit"></i></a>&nbsp<a onclick="if (!confirm('Are you sure to delete ?')){event.stopPropagation(); event.preventDefault();}" class="btn btn-danger btn-lg" href="?id=<?=$value['id'];?>&req=delete"><i class="glyphicon glyphicon-trash"></i></a></td>
 		</tr>
 	<?php } ?>
