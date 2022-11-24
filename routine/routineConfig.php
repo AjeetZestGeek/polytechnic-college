@@ -139,8 +139,7 @@ class routineConfig
 			$this->created_at = date('Y-m-d h-i-s');
 			$stm = $this->con->prepare("INSERT INTO routine(title,content,image,event_date,from_time,to_time,is_globel,priority_id,created_at,created_by_id,status)VALUES(?,?,?,?,?,?,?,?,?,?,?)");
 			$stm->execute([$this->title,$this->content,$this->image,$this->event_date,$this->from_time,$this->to_time,$this->is_globel,$this->priority_id,$this->created_at,$this->created_by_id,$this->status]);
-			echo '<pre>';print_r($stm);
-			echo "<script>alert('Data saved successfully');document.location = 'routineList.php'</script>";
+			echo "<script>document.location = 'routineList.php'</script>";
 		}
 		catch(Exception $e){
 			return $e->getMessage();
@@ -174,8 +173,7 @@ class routineConfig
 			$this->updated_at = date('Y-m-d h-i-s');
 			$stm = $this->con->prepare("UPDATE routine set title = ?,content = ?,image = ?,event_date = ?,from_time = ?,to_time = ?,priority_id = ?,updated_at = ? WHERE id = ?");
 			$stm->execute([$this->title,$this->content,$this->image,$this->event_date,$this->from_time,$this->to_time,$this->priority_id,$this->updated_at,$this->id]);
-			// echo '<pre>';print_r($stm);die;
-			echo "<script>alert('Data updated successfully');document.location = 'routineList.php'</script>";
+			echo "<script>document.location = 'routineList.php'</script>";
 		}
 		catch(Exception $e){
 			return $e->getMessage();
@@ -187,7 +185,7 @@ class routineConfig
 			$stm = $this->con->prepare("DELETE  FROM routine WHERE id = ?");
 			$stm->execute([$this->id]);
 			return $stm->fetchAll();
-			echo "<script>alert('Data deleted successfully');document.location = 'routineList.php'</script>";
+			echo "<script>document.location = 'routineList.php'</script>";
 		}
 		catch(Exception $e){
 			return $e->getMessage();

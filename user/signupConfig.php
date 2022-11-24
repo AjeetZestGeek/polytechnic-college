@@ -138,7 +138,7 @@ class signupConfig
 		try{
 			$stm = $this->con->prepare("UPDATE users set name = ?, email = ?, program = ?, ongoing_term = ? WHERE id = ?");
 			$stm->execute([$this->name,$this->email,$this->program,$this->ongoing_term,$this->id]);
-			echo "<script>alert('Data updated successfully');document.location = 'userList.php'</script>";
+			echo "<script>document.location = 'userList.php'</script>";
 		}
 		catch(Exception $e){
 			return $e->getMessage();
@@ -150,7 +150,7 @@ class signupConfig
 			$stm = $this->con->prepare("DELETE  FROM users WHERE id = ?");
 			$stm->execute([$this->id]);
 			return $stm->fetchAll();
-			echo "<script>alert('Data deleted successfully');document.location = 'userList.php'</script>";
+			echo "<script>document.location = 'userList.php'</script>";
 		}
 		catch(Exception $e){
 			return $e->getMessage();

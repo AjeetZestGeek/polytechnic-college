@@ -42,7 +42,7 @@ $record = $sc->fetchAll();
 			<td><?=$value['program'];?></td>
 			<td><?=$value['ongoing_term'];?></td>
 			<td><a class="btn btn-<?=$value['status']==0?'primary':'warning';?> btn-lg" href="?id=<?=$value['id'];?>&req=change-status&status=<?=$value['status']==0?1:0;?>"><i class=""><?=$value['status']==0?'Activate':'Block';?></i></a></td>
-			<td><a class="btn btn-warning btn-lg" href="userForm.php?id=<?=$value['id'];?>&req=edit"><i class="glyphicon glyphicon-edit"></i></a>&nbsp<a class="btn btn-danger btn-lg" href="?id=<?=$value['id'];?>&req=delete"><i class="glyphicon glyphicon-trash"></i></a></td>
+			<td><a class="btn btn-warning btn-lg" href="userForm.php?id=<?=$value['id'];?>&req=edit"><i class="glyphicon glyphicon-edit"></i></a>&nbsp<a onclick="if (!confirm('It will delete all the post related to this User')){event.stopPropagation(); event.preventDefault();}" class="btn btn-danger btn-lg" href="?id=<?=$value['id'];?>&req=delete"><i class="glyphicon glyphicon-trash"></i></a></td>
 		</tr>
 	<?php } ?>
 	</tbody>

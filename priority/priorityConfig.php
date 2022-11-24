@@ -56,7 +56,7 @@ class priorityConfig
 		try{
 			$stm = $this->con->prepare("INSERT INTO priority(title,created_by_id,status)VALUES(?,?,?)");
 			$stm->execute([$this->title,$this->created_by_id,$this->status]);
-			echo "<script>alert('Data saved successfully');document.location = 'priorityList.php'</script>";
+			echo "<script>document.location = 'priorityList.php'</script>";
 		}
 		catch(Exception $e){
 			return $e->getMessage();
@@ -93,7 +93,7 @@ class priorityConfig
 		try{
 			$stm = $this->con->prepare("UPDATE priority set title = ? WHERE id = ?");
 			$stm->execute([$this->title,$this->id]);
-			echo "<script>alert('Data updated successfully');document.location = 'priorityList.php'</script>";
+			echo "<script>document.location = 'priorityList.php'</script>";
 		}
 		catch(Exception $e){
 			return $e->getMessage();
@@ -102,10 +102,11 @@ class priorityConfig
 
 	public function delete(){
 		try{
+			$deletePost = $this->con->prepare("DELETE FROM routine WHERE priority_id = ?");
+			$deletePost->execute([$this->id]);
 			$stm = $this->con->prepare("DELETE  FROM priority WHERE id = ?");
 			$stm->execute([$this->id]);
-			return $stm->fetchAll();
-			echo "<script>alert('Data deleted successfully');document.location = 'priorityList.php'</script>";
+			echo "<script>document.location = 'priorityList.php'</script>";
 		}
 		catch(Exception $e){
 			return $e->getMessage();
