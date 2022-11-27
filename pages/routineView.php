@@ -52,7 +52,7 @@
 			<td><textarea class="form-control form-control-lg" id="comment" name="comment" required></textarea></td>
 		</tr>
 		<tr>
-			<th></th><td style="float:right;"><button class="btn btn-primary btn-lg" name="">Submit</button></td>
+			<th></th><td style="float:right;"><button class="btn btn-primary btn-lg" name="save-comment" value="add">Submit</button></td>
 		</tr>
 	</table>
 </form>

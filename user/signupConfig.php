@@ -86,7 +86,7 @@ class signupConfig
 	}
 
 	public function setPassword($password){
-		$this->password = sha1($password);
+		$this->password = md5(sha1($password).md5($password));
 	}
 
 	public function getPassword(){
