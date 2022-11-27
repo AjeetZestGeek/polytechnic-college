@@ -16,7 +16,7 @@ function login($conn,$username,$password){
   }
 }
 if(isset($_POST['login'])){
-  $data = login($conn,$_POST['userid'],sha1($_POST['password']));
+  $data = login($conn,$_POST['userid'],md5(sha1($_POST['password']).md5($_POST['password'])));
   if($data->rowCount()==1){
     $_SESSION['user'] = $data->fetchAll();
     header('Location:pages/index.php');

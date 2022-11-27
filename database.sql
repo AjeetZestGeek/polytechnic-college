@@ -12,7 +12,7 @@ CREATE TABLE users(
 	status int(6)
 );
 
-INSERT INTO `users` (`id`, `student_number`, `name`, `email`, `program`, `ongoing_term`, `password`, `role`, `status`) VALUES (NULL, 'admin', 'Admin', 'admin@gmail.com', '', NULL, '23d42f5f3f66498b2c8ff4c20b8c5ac826e47146', 'Admin', '1');
+INSERT INTO `users` (`id`, `student_number`, `name`, `email`, `program`, `ongoing_term`, `password`, `role`, `status`) VALUES (NULL, 'admin', 'Admin', 'admin@gmail.com', '', NULL, '6013c7deb7f4d8d9768047d0775d96fd', 'Admin', '1');
 -- Admin Credintial --
 -- UserId :- admin / admin@gmail.com
 -- Password :- admin@123
