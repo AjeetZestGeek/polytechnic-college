@@ -33,12 +33,12 @@
 			<th scope="col">
 				<div class="dropdown">
 				  <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-				    Priority
+				    <b>Priority</b>
 				  </button>
 				  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+				  	<li><a class="dropdown-item <?=isset($_GET['priority'])&&$_GET['priority']==''?'active':'';?>" href="?page-no=<?=isset($_GET['page-no'])&&$_GET['page-no']<=$totalPages?$_GET['page-no']:1;?>">All</a></li>
 				  	<?php foreach($prios as $prio){ ?>
-				    <li><a class="dropdown-item <?=isset($_GET['priority'])&&$_GET['priority']==$prio['id']?
-				    'active':'';?>" href="?page-no=<?=isset($_GET['page-no'])&&$_GET['page-no']<=$totalPages?$_GET['page-no']:1;?>&priority=<?=$prio['id'];?>"><?=$prio['title'];?></a></li>
+				    <li><a class="dropdown-item <?=isset($_GET['priority'])&&$_GET['priority']==$prio['id']?'active':'';?>" href="?page-no=<?=isset($_GET['page-no'])&&$_GET['page-no']<=$totalPages?$_GET['page-no']:1;?>&priority=<?=$prio['id'];?>"><?=$prio['title'];?></a></li>
 				<?php } ?>
 				  </ul>
 				</div>
