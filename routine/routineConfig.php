@@ -146,11 +146,22 @@ class routineConfig
 		}
 	}
 
-	public function fetchAll($userid){
+	public function fetchAll($userid,$pageno=0,$priority=''){
 		try{
-			$stm = $this->con->prepare("SELECT * FROM routine WHERE created_by_id = ?");
+			$limit = 4;
+			$offset = ($pageno-1)*$limit;
+			$sql = "SELECT * FROM routine WHERE created_by_id = ?";
+			if($priority!=''){
+				$sql .= " AND priority_id = $priority";
+			}
+			if($pageno!=0){
+				$paginatedSql = $sql . " LIMIT $limit OFFSET $offset";
+				$stmPagi = $this->con->prepare($paginatedSql);
+				$stmPagi->execute([$userid]);
+			}
+			$stm = $this->con->prepare($sql);
 			$stm->execute([$userid]);
-			return $stm->fetchAll();
+			return ['data'=>$stmPagi->fetchAll(),'total-page'=>ceil($stm->rowCount()/$limit)];
 		}
 		catch(Exception $e){
 			return $e->getMessage();
