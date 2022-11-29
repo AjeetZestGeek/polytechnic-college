@@ -31,8 +31,8 @@
   <p class="event-priority btn btn-<?=getTitleById($record['priority_id'])=='High'?'danger':'warning';?>"><?=getTitleById($record['priority_id']);?></p>
   <p>Description : <?=$record['content'];?></p>
   <div class="update-btns">
-  	<a href="routineForm.php?page=routine&id=<?=$record['id'];?>"><button class="btn btn-warning btn-lg">Update</button></a>
-  	<a href="routineList.php?id=<?=$record['id'];?>&req=delete"><button class="btn btn-danger btn-lg">Delete</button></a>
+  	<a href="routineForm.php?page=routine&id=<?=$record['id'];?>&req=edit"><button class="btn btn-warning btn-lg">Update</button></a>
+  	<a href="routineList.php?page=routine&id=<?=$record['id'];?>&req=delete"><button class="btn btn-danger btn-lg">Delete</button></a>
   </div>
 </div>
 
