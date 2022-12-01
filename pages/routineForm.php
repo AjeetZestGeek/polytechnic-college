@@ -24,7 +24,7 @@
     <div class="form-group">
       <label class="control-label col-sm-2" for="formFile">Image:</label>
       <div class="col-sm-10">
-        <input type="file" class="form-control form-control-lg" id="formFile" placeholder="Enter image" name="image" value="<?=isset($data['image'])?$data['image']:'';?>">
+        <input type="file" class="form-control form-control-lg" id="formFile" placeholder="Enter image" name="image">
       </div>
     </div>
     <div class="form-group">
