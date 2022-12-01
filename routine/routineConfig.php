@@ -67,7 +67,9 @@ class routineConfig
 	}
 
 	public function getImage(){
-		return $this->image;
+		$stm = $this->con->prepare("SELECT image FROM routine WHERE id = ?");
+		$stm->execute([$this->id]);
+		return $stm->fetchAll()[0]['image'];
 	}
 
 	public function setEventDate($event_date){
@@ -154,6 +156,7 @@ class routineConfig
 			if($priority!=''){
 				$sql .= " AND priority_id = $priority";
 			}
+			$sql .= " ORDER BY id DESC";
 			if($pageno!=0){
 				$paginatedSql = $sql . " LIMIT $limit OFFSET $offset";
 				$stmPagi = $this->con->prepare($paginatedSql);
