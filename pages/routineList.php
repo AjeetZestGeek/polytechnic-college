@@ -55,7 +55,7 @@
 		<tr>
 			<th scope="row"><?=++$sl;?></th>
 			<td><a href="routineView.php?id=<?=$value['id'];?>"><?=$value['title'];?></a></td>
-			<td><a href="routineView.php?id=<?=$value['id'];?>"><img src="<?=$value['image'];?>" width="140" height="80"></a></td>
+			<td><a href="routineView.php?id=<?=$value['id'];?>"><img src="<?=$value['image'];?>"></a></td>
 			<td><a href="routineView.php?id=<?=$value['id'];?>"><?=$value['event_date'];?></a></td>
 			<td><?=$value['from_time'];?></td>
 			<td><?=$value['to_time'];?></td>
