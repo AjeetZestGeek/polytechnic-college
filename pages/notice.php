@@ -5,12 +5,9 @@
 	$pr = new priorityConfig();
 	$prios = $pr->fetchAll();
 	$sc = new routineConfig();
-	if($userrole=='Admin'){
+	if($userrole=='User'){
 		$statusMsg = "Commented";
-		$datas = $sc->fetchAll('',(isset($_GET['page-no'])?$_GET['page-no']:1),(isset($_GET['priority'])?$_GET['priority']:''),(isset($_POST['search'])?$_POST['search']:''));
-	}else{
-		$statusMsg = "Completed";
-		$datas = $sc->fetchAll($userid,(isset($_GET['page-no'])?$_GET['page-no']:1),(isset($_GET['priority'])?$_GET['priority']:''),(isset($_POST['search'])?$_POST['search']:''));
+		$datas = $sc->fetchAll('',(isset($_GET['page-no'])?$_GET['page-no']:1),(isset($_GET['priority'])?$_GET['priority']:''),(isset($_POST['search'])?$_POST['search']:''),1);
 	}
 	$record = $datas['data'];
 	$totalPages = $datas['total-page'];
