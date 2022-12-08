@@ -3,8 +3,12 @@
 	require_once('../routine/routineProcess.php');
 	require_once('../priority/priorityProcess.php');
 	require_once('../comment/commentProcess.php');
-	if(!isset($_GET['id'])){
-		echo '<a class="btn btn-primary btn-lg" href="routineList.php">Back</a><h1>404 Error No Post Found</h1>';die;
+	if(!isset($_GET['id'])&&isset($_GET['from'])){
+		if ($_GET['from']=='rotine') { 
+			echo '<a class="btn btn-primary btn-lg" href="routineList.php">Back</a><h1>404 Error No Post Found</h1>';
+		}else if($_GET['from']=='notice'){
+			echo '<a class="btn btn-primary btn-lg" href="notice.php">Back</a><h1>404 Error No Post Found</h1>';
+		}
 	}
 	$sc = new routineConfig();
 	$sc->setId($_GET['id']);
@@ -22,7 +26,11 @@
 		$comRecords = $comObj->fetchByUserId($userid,$_GET['id']);
 	}
  ?>
-<a class="btn btn-primary btn-lg" href="routineList.php">Back</a>
+ <?php if (isset($_GET['from'])&&$_GET['from']=='rotine') { ?>
+	<a class="btn btn-primary btn-lg" href="routineList.php">Back</a>
+<?php }else{
+	?><a class="btn btn-primary btn-lg" href="notice.php">Back</a><?php
+} ?>
 <div class="card">
 
 	<div class="container">
@@ -49,10 +57,12 @@
   </table>
   <p class="event-priority btn btn-<?=getTitleById($record['priority_id'])=='High'?'danger':'warning';?>"><?=getTitleById($record['priority_id']);?></p>
   <p>Description : <?=$record['content'];?></p>
+  <?php if (isset($_GET['from'])&&$_GET['from']=='rotine') { ?>
   <div class="update-btns">
   	<a href="routineForm.php?page=routine&id=<?=$record['id'];?>&req=edit"><button class="btn btn-warning btn-lg">Update</button></a>
   	<a href="routineList.php?page=routine&id=<?=$record['id'];?>&req=delete"><button class="btn btn-danger btn-lg">Delete</button></a>
   </div>
+<?php } ?>
 </div>
 
 <div class="row align-items-center main-row-sec main-comment">
@@ -95,8 +105,8 @@
 			<td>
 				<?php 
 					$queryString = explode('&', $_SERVER['QUERY_STRING']);
-					if(count($queryString)>=2){
-						$queryString = $queryString[0].'&'.$queryString[1].'&';
+					if(count($queryString)>2){
+						$queryString = $queryString[0].'&'.$queryString[1].'&'.$queryString[2].'&';
 					}else{
 						$queryString = '';
 					}

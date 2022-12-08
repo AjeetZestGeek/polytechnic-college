@@ -60,9 +60,9 @@
 			?>
 		<tr>
 			<th scope="row"><?=++$sl;?></th>
-			<td><a href="routineView.php?id=<?=$value['id'];?>&title=<?=str_replace(' ', '-', $value['title']);?>"><?=$value['title'];?></a></td>
-			<td><a href="routineView.php?id=<?=$value['id'];?>&title=<?=str_replace(' ', '-', $value['title']);?>"><img src="<?=$value['image'];?>"></a></td>
-			<td><a href="routineView.php?id=<?=$value['id'];?>&title=<?=str_replace(' ', '-', $value['title']);?>"><?=$value['event_date'];?></a></td>
+			<td><a href="routineView.php?from=rotine&id=<?=$value['id'];?>&title=<?=str_replace(' ', '-', $value['title']);?>"><?=$value['title'];?></a></td>
+			<td><a href="routineView.php?from=rotine&id=<?=$value['id'];?>&title=<?=str_replace(' ', '-', $value['title']);?>"><img src="<?=$value['image'];?>"></a></td>
+			<td><a href="routineView.php?from=rotine&id=<?=$value['id'];?>&title=<?=str_replace(' ', '-', $value['title']);?>"><?=$value['event_date'];?></a></td>
 			<td><?=$value['from_time'];?></td>
 			<td><?=$value['to_time'];?></td>
 			<td><?=getTitleById($value['priority_id']);?></td>
