@@ -148,7 +148,7 @@ class routineConfig
 		}
 	}
 
-	public function fetchAll($userid='',$pageno=0,$priority=''){
+	public function fetchAll($userid='',$pageno=0,$priority='',$search=''){
 		try{
 			$limit = 4;
 			$offset = ($pageno-1)*$limit;
@@ -159,11 +159,14 @@ class routineConfig
 			if($priority!=''){
 				$sql .= " AND priority_id = $priority";
 			}
+			if($search!=''){
+				$sql .= " AND (title LIKE '%$search%' OR event_date LIKE '%$search%' OR from_time LIKE '%$search%' OR to_time LIKE '%$search%')";
+			}
 			$sql .= " ORDER BY id DESC";
 			if($pageno!=0){
 				$paginatedSql = $sql . " LIMIT $limit OFFSET $offset";
 				$stmPagi = $this->con->prepare($paginatedSql);
-				$stmPagi->execute([$userid]);
+				$stmPagi->execute();
 			}
 			$stm = $this->con->prepare($sql);
 			$stm->execute();
