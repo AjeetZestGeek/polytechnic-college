@@ -6,6 +6,7 @@ if(!isset($_SESSION['user'])&&empty($_SESSION['user'])){
   <?php
 }else{
   $userdata = $_SESSION['user'][0];
+  $userid = $userdata['id'];
   $username = ucfirst($userdata['name']);
   $userrole = $userdata['role'];
   $userstatus = $userdata['status'];

@@ -5,7 +5,11 @@
 	$pr = new priorityConfig();
 	$prios = $pr->fetchAll();
 	$sc = new routineConfig();
-	$datas = $sc->fetchAll($userid,(isset($_GET['page-no'])?$_GET['page-no']:1),(isset($_GET['priority'])?$_GET['priority']:''));
+	if($userrole=='Admin'){
+		$datas = $sc->fetchAll((isset($_GET['page-no'])?$_GET['page-no']:1),(isset($_GET['priority'])?$_GET['priority']:''));
+	}else{
+		$datas = $sc->fetchAll($userid,(isset($_GET['page-no'])?$_GET['page-no']:1),(isset($_GET['priority'])?$_GET['priority']:''));
+	}
 	$record = $datas['data'];
 	$totalPages = $datas['total-page'];
  ?>
@@ -54,9 +58,9 @@
 			?>
 		<tr>
 			<th scope="row"><?=++$sl;?></th>
-			<td><a href="routineView.php?id=<?=$value['id'];?>"><?=$value['title'];?></a></td>
-			<td><a href="routineView.php?id=<?=$value['id'];?>"><img src="<?=$value['image'];?>"></a></td>
-			<td><a href="routineView.php?id=<?=$value['id'];?>"><?=$value['event_date'];?></a></td>
+			<td><a href="routineView.php?id=<?=$value['id'];?>&title=<?=str_replace(' ', '-', $value['title']);?>"><?=$value['title'];?></a></td>
+			<td><a href="routineView.php?id=<?=$value['id'];?>&title=<?=str_replace(' ', '-', $value['title']);?>"><img src="<?=$value['image'];?>"></a></td>
+			<td><a href="routineView.php?id=<?=$value['id'];?>&title=<?=str_replace(' ', '-', $value['title']);?>"><?=$value['event_date'];?></a></td>
 			<td><?=$value['from_time'];?></td>
 			<td><?=$value['to_time'];?></td>
 			<td><?=getTitleById($value['priority_id']);?></td>
