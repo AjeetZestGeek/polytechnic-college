@@ -160,7 +160,7 @@ class routineConfig
 				$sql .= " AND priority_id = $priority";
 			}
 			if($is_global==1){
-				$sql .= " AND is_global = 1";
+				$sql .= " AND is_globel = 1";
 			}
 			if($search!=''){
 				$sql .= " AND (title LIKE '%$search%' OR event_date LIKE '%$search%' OR from_time LIKE '%$search%' OR to_time LIKE '%$search%')";

@@ -5,10 +5,8 @@
 	$pr = new priorityConfig();
 	$prios = $pr->fetchAll();
 	$sc = new routineConfig();
-	if($userrole=='User'){
-		$statusMsg = "Commented";
-		$datas = $sc->fetchAll('',(isset($_GET['page-no'])?$_GET['page-no']:1),(isset($_GET['priority'])?$_GET['priority']:''),(isset($_POST['search'])?$_POST['search']:''),1);
-	}
+	$statusMsg = "Commented";
+	$datas = $sc->fetchAll('',(isset($_GET['page-no'])?$_GET['page-no']:1),(isset($_GET['priority'])?$_GET['priority']:''),(isset($_POST['search'])?$_POST['search']:''),1);
 	$record = $datas['data'];
 	$totalPages = $datas['total-page'];
  ?>
@@ -47,7 +45,6 @@
 				</div>
 			</th>
 			<th scope="col">Status</th>
-			<th scope="col">Action</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -57,14 +54,13 @@
 			?>
 		<tr>
 			<th scope="row"><?=++$sl;?></th>
-			<td><a href="routineView.php?id=<?=$value['id'];?>&title=<?=str_replace(' ', '-', $value['title']);?>"><?=$value['title'];?></a></td>
-			<td><a href="routineView.php?id=<?=$value['id'];?>&title=<?=str_replace(' ', '-', $value['title']);?>"><img src="<?=$value['image'];?>"></a></td>
-			<td><a href="routineView.php?id=<?=$value['id'];?>&title=<?=str_replace(' ', '-', $value['title']);?>"><?=$value['event_date'];?></a></td>
+			<td><a href="routineView.php?from=notice&id=<?=$value['id'];?>&title=<?=str_replace(' ', '-', $value['title']);?>"><?=$value['title'];?></a></td>
+			<td><a href="routineView.php?from=notice&id=<?=$value['id'];?>&title=<?=str_replace(' ', '-', $value['title']);?>"><img src="<?=$value['image'];?>"></a></td>
+			<td><a href="routineView.php?from=notice&id=<?=$value['id'];?>&title=<?=str_replace(' ', '-', $value['title']);?>"><?=$value['event_date'];?></a></td>
 			<td><?=$value['from_time'];?></td>
 			<td><?=$value['to_time'];?></td>
 			<td><?=getTitleById($value['priority_id']);?></td>
 			<td><a onclick="alert('Comment to complete !!!');" class=" <?=$value['status']==0?' btn btn-warning btn-lg':'btn btn-sucess btn-lg'?>"><?=$value['status']==0?'Pending':$statusMsg;?></a></td>
-			<td><a class="btn btn-warning btn-lg" href="routineForm.php?page=routine&id=<?=$value['id'];?>&req=edit"><i class="glyphicon glyphicon-edit"></i></a>&nbsp<a onclick="if (!confirm('Are you sure to delete ?')){event.stopPropagation(); event.preventDefault();}" class="btn btn-danger btn-lg" href="?id=<?=$value['id'];?>&req=delete"><i class="glyphicon glyphicon-trash"></i></a></td>
 		</tr>
 	<?php } ?>
 	</tbody>
