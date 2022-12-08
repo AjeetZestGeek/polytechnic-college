@@ -86,10 +86,10 @@ class commentConfig
 		}
 	}
 
-	public function fetchByUserId($userid){
+	public function fetchByUserId($userid,$routineid){
 		try{
-			$stm = $this->con->prepare("SELECT * FROM comment WHERE created_by_id = ?");
-			$stm->execute([$userid]);
+			$stm = $this->con->prepare("SELECT id as comId, feedback, created_at as comCreateDate, updated_at as comUpdateDate  FROM comment WHERE created_by_id = $userid AND routine_id = $routineid");
+			$stm->execute();
 			return $stm->fetchAll();
 		}
 		catch(Exception $e){
@@ -99,7 +99,7 @@ class commentConfig
 
 	public function fetchByRoutineId($routineid){
 		try{
-			$stm = $this->con->prepare("SELECT * FROM comment WHERE routine_id = ?");
+			$stm = $this->con->prepare("SELECT c.id as comId, c.created_at as comCreateDate, c.updated_at as comUpdateDate, feedback, student_number, name, email FROM comment as c JOIN users as u ON c.created_by_id = u.id WHERE routine_id = ?");
 			$stm->execute([$routineid]);
 			return $stm->fetchAll();
 		}

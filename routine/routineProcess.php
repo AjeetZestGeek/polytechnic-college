@@ -90,7 +90,7 @@ function uploadImage($obj,$action){
     	$imageProcess = 1;
     }else{
 	    move_uploaded_file($fileName, $path. $resizeFileName. ".". $fileExt);
-	    $obj->setImage($path. $resizeFileName. ".". $fileExt);
+	    $obj->setImage($path."thump_".$resizeFileName.'.'. $fileExt);
 	    $imageProcess = 1;
 	}
 	return $imageProcess;
