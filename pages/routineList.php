@@ -54,7 +54,7 @@
 	<tbody>
 		<?php
 		$sl = 0; 
-		foreach ($record as $key => $value) { 
+		foreach ($record as $key => $value) {
 			?>
 		<tr>
 			<th scope="row"><?=++$sl;?></th>

@@ -212,4 +212,15 @@ class routineConfig
 		}
 	}
 
+	public function commentCount(){
+		try{
+			$stm = $this->con->prepare("SELECT * FROM comment WHERE routine_id = ?");
+			$stm->execute([$this->id]);
+			return $stm->rowCount();
+		}
+		catch(Exception $e){
+			return $e->getMessage();
+		}
+	}
+
 }
