@@ -79,6 +79,8 @@ class commentConfig
 			$this->created_at = date('Y-m-d h-i-s');
 			$stm = $this->con->prepare("INSERT INTO comment(routine_id,feedback,created_at,created_by_id,status)VALUES(?,?,?,?,?)");
 			$stm->execute([$this->routine_id,$this->feedback,$this->created_at,$this->created_by_id,$this->status]);
+			$updateRoutineStatus = $this->con->prepare("UPDATE routine SET status = ? WHERE id = ?");
+			$updateRoutineStatus->execute([1,$this->routine_id]);
 			echo "<script>document.location = 'routineView.php?id='".$this->routine_id."';</script>";
 		}
 		catch(Exception $e){
