@@ -25,7 +25,7 @@ if (isset($_POST['save'])) {
 	$sc->setToTime($_POST['to_time']);
 	$sc->setPriorityId($_POST['priority_id']);
 	if($_POST['save']=='save'){
-		$sc->setIsGlobel(isAdmin($userid));
+		$sc->setIsGlobel($userrole=='Admin'?1:0);
 		$sc->setCreatedBy($userid);
 		if(uploadImage($sc,'save')){
 			$sc->insertData();

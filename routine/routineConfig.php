@@ -148,7 +148,7 @@ class routineConfig
 		}
 	}
 
-	public function fetchAll($userid='',$pageno=0,$priority='',$search=''){
+	public function fetchAll($userid='',$pageno=0,$priority='',$search='',$is_global=0){
 		try{
 			$limit = 4;
 			$offset = ($pageno-1)*$limit;
@@ -158,6 +158,9 @@ class routineConfig
 			}
 			if($priority!=''){
 				$sql .= " AND priority_id = $priority";
+			}
+			if($is_global==1){
+				$sql .= " AND is_global = 1";
 			}
 			if($search!=''){
 				$sql .= " AND (title LIKE '%$search%' OR event_date LIKE '%$search%' OR from_time LIKE '%$search%' OR to_time LIKE '%$search%')";

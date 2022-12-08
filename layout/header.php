@@ -106,7 +106,7 @@ div#navbarNavDropdown {
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light" href="#">Notice</a>
+          <a class="nav-link text-light" href="../pages/notice.php">Notice</a>
         </li>
         <?php if($userrole=='Admin'){ ?>
         <li class="nav-item">
