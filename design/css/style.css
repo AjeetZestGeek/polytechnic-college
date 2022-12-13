@@ -75,3 +75,11 @@ a.page-link.active {
     margin-bottom: 60px;
     padding: 35px 15px;
 }
+.poly-img-div{
+    position: relative;
+}
+.poly-img-div .poly-img-delete-btn{
+    position: absolute;
+    top: 90%;
+    left: 45%;
+}

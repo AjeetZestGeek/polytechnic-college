@@ -32,19 +32,16 @@
 	?><a class="btn btn-primary btn-lg" href="notice.php">Back</a><?php
 } ?>
 <div class="card">
-
 	<div class="container">
-
-		<div class="col-lg-6" style="height: 350px;">
-
+		<div class="col-lg-6 poly-img-div" style="height: 350px;">
 		  <img src="<?=$image?>" alt="<?=$record['title']?>" style="width:90%;height: 90%;">
+		  <button class="btn btn-danger btn-lg poly-img-delete-btn">Remove</button>
 		</div>
 		<div class="col-lg-6" style="height: 350px;">
 		  <p><h2><b><?=$record['title']?></b></h2></p><br>
 		  <p style="float: right;"><b>Created Date : </b><?=date("m-d-Y", strtotime($record['created_at']));?></p>
 		</div>
 	</div>
-  
   
   <table class="table table-boarderless">
   	<tr>
@@ -147,3 +144,21 @@
   <?php 
 	require_once '../layout/footer.php';
  ?>
+ <script type="text/javascript">
+ 	$(document).ready(function(){
+ 		$('.poly-img-delete-btn').click(function(){
+ 			var thumb = '<?=$record['image'];?>';
+   		var image = '<?=$image;?>';
+   		$.post("ajax/remove_image.php",
+      {
+         'thumb':thumb,
+         'image':image
+      },function(data,status){
+         if(status='success'){
+            console.log('Image Removed');
+            window.location.href = "http://localhost/polytechnic-college/pages/routineView.php?from=rotine&id=25&title=Aut-debitis-nostrud-";
+         }
+      });
+ 		});
+ 	});
+ </script>
