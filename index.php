@@ -5,10 +5,11 @@ $username = "root";
 $password = "password";
 $conn = new PDO("mysql:host=$servername;dbname=polytechnic_college", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-function login($conn,$username,$password){
+function login($conn,$username){
   try{
-    $stm = $conn->prepare("SELECT * FROM users WHERE (student_number = ? OR email = ?) AND password = ?");
-    $stm->execute([$username,$username,$password]);
+    $stm = $conn->prepare("SELECT * FROM users WHERE (student_number = ? OR email = ?)");
+    $stm->execute([$username,$username]);
+
     return $stm;
   }
   catch(Exception $e){
@@ -16,9 +17,10 @@ function login($conn,$username,$password){
   }
 }
 if(isset($_POST['login'])){
-  $data = login($conn,$_POST['userid'],md5(sha1($_POST['password']).md5($_POST['password'])));
-  if($data->rowCount()==1){
-    $_SESSION['user'] = $data->fetchAll();
+  $dataObj = login($conn,$_POST['userid']);
+  $data = $dataObj->fetchAll();
+  if(password_verify($_POST['password'],$data[0]['password'])){
+    $_SESSION['user'] = $data;
     header('Location:pages/index.php');
   }else{
     echo '<script>alert("Student ID / Password wrong");window.location="index.php";</script>';
