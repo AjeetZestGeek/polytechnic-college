@@ -136,6 +136,15 @@
 			<td><textarea class="form-control form-control-lg" id="comment" name="comment" required><?=isset($Comdata['feedback'])?$Comdata['feedback']:''?></textarea></td>
 		</tr>
 		<tr>
+			<th><img src="captcha.php" alt="PHP Captcha" width="200" height="50"></th>
+			<td><input class="form-control form-control-lg" name="captcha" id="captcha" type="text" placeholder="Enter Captcha"></td>
+		</tr>
+		<?php if(!empty($captchaError)) {?>
+		<tr>
+			<td colspan="2" class="<?php echo $captchaError['status']; ?>"><?php echo $captchaError['message']; ?></td>
+		</tr>
+		<?php }?>
+		<tr>
 			<th></th><td style="float:right;"><button class="btn btn-<?=isset($Comdata['feedback'])?'warning':'primary'?> btn-lg" name="save-comment" value="<?=isset($Comdata['feedback'])?'update':'add'?>"><?=isset($Comdata['feedback'])?'update':'add'?> Comment</button></td>
 		</tr>
 	</table>
